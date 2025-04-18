@@ -1,0 +1,70 @@
+body {
+    background-image: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    font-family: 'Poppins', sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+} .container {
+    background: #a6eb1234;
+    border-radius: 10px;
+    padding: 60px;
+    margin: 300px auto;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    box-shadow: #000000 0px 0px 20px;
+} h1 {
+    text-align: center;
+} #submit {
+    margin: 20px;
+    background-color: #00bf72;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50px;
+} #submit:hover {
+    background-color: #00bf736b;
+    scale: 1.1;
+    transition: 0.3s;
+} #guess {
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #00bf73;
+    color: white;
+    font-size: 20px;
+} 
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+ p {
+    text-align: center;
+    
+} .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: 95%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    gap: 20px;
+} .btn {
+    background-color: #fd8700;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50px;
+} .btn:hover {
+    background-color: #72fa036b;
+    scale: 1.1;
+    transition: 0.3s;
+} .btn-container a {
+    text-decoration: none;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystery Number</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="script.js" defer></script>
+</head>
+
+    <video id="loseVideo" autoplay style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 9999;">
+    <source src="gameover.mp4" type="video/mp4">
+    </video>
+
+    <body>
+
+        <section class="container">
+            <h1>Jeu du Nombre Mystère</h1>
+            <p>Trouve un nombre entre 1 et 10</p>
+            <input type="number" id="guess" min="1" max="10"/>
+            <button id="submit">Submit</button>
+            <p id="hint"></p>
+            <p id="attempts"></p>
+            <p id="attemptsRes"></p>
+        </section>
+
+        <div class="btn-container">
+            <button class="btn" id="easy" href="index.html">Easy</button>
+            <button class="btn" id="medium" href="/medium/mid.html">Medium</button>
+            <button class="btn" id="hard" href="/hard/hard.html">Hard</button>
+        </div>
+
+        <script>
+            const easyButton = document.getElementById('easy');
+            const mediumButton = document.getElementById('medium');
+            const hardButton = document.getElementById('hard');
+
+            easyButton.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+            mediumButton.addEventListener('click', () => {
+                window.location.href = 'medium/mid.html';
+            });
+            hardButton.addEventListener('click', () => {
+                window.location.href = 'hard/hard.html';
+            });
+        </script>
+
+    </body>
+</html>
