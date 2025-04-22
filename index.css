@@ -99,7 +99,7 @@ input::-webkit-inner-spin-button {
     animation: 3s spin linear infinite;
     
 } .container::before {
-    filter: blur(6.5rem);
+    filter: blur(1.5rem);
     opacity: 0.5;
 }
 @keyframes spin{
