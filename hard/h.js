@@ -46,7 +46,6 @@ function checkGuess() {
         attemptsText.textContent = "Vous avez dépassé le nombre d'essais autorisés ! Le nombre était " + randomNum;
         attemptsText.style.color = "red";
         submit.disabled = true; 
-
         const videoElement = document.createElement("video");
         videoElement.src = "../screamer.mp4";
         videoElement.style.width = "100%";
@@ -65,6 +64,7 @@ function checkGuess() {
         videoElement.play().catch(err => {
             console.error("Erreur lors de la lecture:", err);
         });
+        
     } else if (attempts < 1) {
         attemptsText.textContent = "Vous avez encore " + (2 - attempts) + " essais restants.";
         attemptsText.style.color = "orange";
