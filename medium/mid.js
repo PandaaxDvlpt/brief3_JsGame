@@ -32,9 +32,6 @@ function checkGuess() {
         attemptsText.textContent = "Vous avez dépassé le nombre d'essais autorisés ! Le nombre était " + randomNum;
         attemptsText.style.color = "red";
         submit.disabled = true;
-        const video = document.getElementById("loseVideo");
-        video.style.display = "block";
-        video.play();
     } else if (attempts < 2) {
         attemptsText.textContent = "Vous avez encore " + (2 - attempts) + " essais restants.";
         attemptsText.style.color = "orange";

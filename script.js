@@ -10,33 +10,39 @@ const hint = document.getElementById("hint");
 const attemptsText = document.getElementById("attempts");
 const attemptsRest = document.getElementById("attemptsRest");
 
-// Les Events 
-
 submit.addEventListener("click", checkGuess);
 
 function checkGuess() {
     const userValue = Number(guess.value);
+    const ecart = Math.abs(userValue - randomNum); 
     attempts++;
-  
     // Les Conditions randomNum
     if (userValue == randomNum) {
-      hint.textContent = "Félicitations ! Vous avez trouvé le nombre" + attempts + " essais.";
+      hint.textContent = "Félicitations ! Vous avez trouvé le nombre " + attempts + " essais.";
       hint.style.color = "green";
     } else if (userValue < randomNum) {
-      hint.textContent = "Trop bas ! Essayez encore.";
-      hint.style.color = "red";
+        if(ecart < 2) {
+            hint.textContent = "Un peu bas ! Vous êtes très proche ! Essayez encore.";
+            hint.style.color = "yellow";
+        } else if(ecart < 5) {
+            hint.textContent = "Trop bas ! Vous vous refroidissez! Essayez encore.";
+            hint.style.color = "red";
+        }
     } else {
-      hint.textContent = "Trop haut ! Essayez encore.";
-      hint.style.color = "red";
+        if(ecart > 2) {
+            hint.textContent = "Un peu haut ! Vous êtes très proche ! Essayez encore.";
+            hint.style.color = "yellow";
+        } else if(ecart > 5) {
+            hint.textContent = "Trop haut ! Vous vous refroidissez! Essayez encore.";
+            hint.style.color = "red";
+        }
     }
+    
     // Les Essais
     if (attempts > 2){
         attemptsText.textContent = "Vous avez dépassé le nombre d'essais autorisés ! Le nombre était " + randomNum;
         attemptsText.style.color = "red";
-        submit.disabled = true; 
-        const video = document.getElementById("loseVideo");
-        video.style.display = "block";
-        video.play();
+        submit.disabled = true;
     } else if (attempts < 3) {
         attemptsText.textContent = "Vous avez encore " + (3 - attempts) + " essais restants.";
         attemptsText.style.color = "orange";
@@ -48,4 +54,7 @@ function checkGuess() {
     // Réinitialiser le champ de saisie
     guess.value = ""; 
     guess.focus(); 
+
+
+
 }
