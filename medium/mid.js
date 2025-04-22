@@ -7,6 +7,9 @@ const submit = document.getElementById("submit");
 const hint = document.getElementById("hint");
 const attemptsText = document.getElementById("attempts");
 const attemptsRest = document.getElementById("attemptsRest");
+const videoElement = document.createElement("video");
+document.getElementById("videoContainer").appendChild(videoElement);
+
 
 // Les Events 
 
@@ -43,6 +46,25 @@ function checkGuess() {
         attemptsText.textContent = "Vous avez dépassé le nombre d'essais autorisés ! Le nombre était " + randomNum;
         attemptsText.style.color = "red";
         submit.disabled = true;
+
+        const videoElement = document.createElement("video");
+        videoElement.src = "../screamer.mp4";
+        videoElement.style.width = "100%";
+        videoElement.style.height = "100%";
+        videoElement.autoplay = true;
+        
+        document.body.appendChild(videoElement);
+        
+        videoElement.onloadeddata = function() {
+            videoElement.requestFullscreen().catch(err => {
+                console.error("Erreur lors du passage en plein écran:", err);
+            });
+        };
+        
+        // Démarrer la lecture
+        videoElement.play().catch(err => {
+            console.error("Erreur lors de la lecture:", err);
+        });
     } else if (attempts < 2) {
         attemptsText.textContent = "Vous avez encore " + (2 - attempts) + " essais restants.";
         attemptsText.style.color = "orange";
