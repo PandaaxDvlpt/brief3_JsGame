@@ -14,29 +14,30 @@ submit.addEventListener("click", checkGuess);
 
 function checkGuess() {
     const userValue = Number(guess.value);
+    const ecart = Math.abs(userValue - randomNum); 
     attempts++;
   
     // Les Conditions randomNum
     if (userValue == randomNum) {
-      hint.textContent = "Félicitations ! Vous avez trouvé le nombre" + attempts + " essais.";
-      hint.style.color = "green";
-    } else if (userValue < randomNum) {
-      if(ecart < 2) {
-        hint.textContent = "Un peu bas ! Vous êtes très proche ! Essayez encore.";
-        hint.style.color = "yellow";
-    } else if(ecart < 5) {
-        hint.textContent = "Trop bas ! Vous vous refroidissez! Essayez encore.";
-        hint.style.color = "red";
-    }
-} else {
-    if(ecart > 2) {
-        hint.textContent = "Un peu haut ! Vous êtes très proche ! Essayez encore.";
-        hint.style.color = "yellow";
-    } else if(ecart > 5) {
-        hint.textContent = "Trop haut ! Vous vous refroidissez! Essayez encore.";
-        hint.style.color = "red";
-    }
-}
+        hint.textContent = "Félicitations ! Vous avez trouvé le nombre " + attempts + " essais.";
+        hint.style.color = "green";
+      } else if (userValue < randomNum) {
+          if(ecart < 2) {
+              hint.textContent = "Un peu bas ! Vous êtes très proche ! Essayez encore.";
+              hint.style.color = "yellow";
+          } else if(ecart < 5) {
+              hint.textContent = "Trop bas ! Vous vous refroidissez! Essayez encore.";
+              hint.style.color = "red";
+          }
+      } else {
+          if(ecart > 2) {
+              hint.textContent = "Un peu haut ! Vous êtes très proche ! Essayez encore.";
+              hint.style.color = "yellow";
+          } else if(ecart > 5) {
+              hint.textContent = "Trop haut ! Vous vous refroidissez! Essayez encore.";
+              hint.style.color = "red";
+          }
+      }
     // Les Essais
     if (attempts > 0){
         attemptsText.textContent = "Vous avez dépassé le nombre d'essais autorisés ! Le nombre était " + randomNum;

@@ -1,37 +1,50 @@
+:root{
+    --base-color: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    --color-container: #329b40;
+    --color-btn: #00bf73;
+    --primary-color: #3a435d;
+  }
+  .darkmode{
+    --base-color: linear-gradient(to right bottom, #020c1a, #013655, #01383d, #015030, #334b01);
+    --color-container: #2c5f31;
+    --color-btn: #139424;
+    --primary-color: #3a435d;
+  }
+
 body {
-    background-image: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    background-image: var(--base-color);
     font-family: 'Poppins', sans-serif;
     background-size: cover;
     background-attachment: fixed;
 } .container {
-    background: #a6eb1234;
+    background-color: var(--color-container);
     border-radius: 10px;
     padding: 60px;
     margin: 300px auto;
     display: flex;
     flex-direction: column;
     width: 250px;
-    box-shadow: #000000 0px 0px 20px;
+    position: relative;
 } h1 {
     text-align: center;
 } #submit {
     margin: 20px;
-    background-color: #00bf72;
+    background-color: var(--color-btn);
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 50px;
 } #submit:hover {
-    background-color: #00bf736b;
-    scale: 1.1;
+    background-color: #00bf73;
+    scale: 1.03;
     transition: 0.3s;
 } #guess {
     text-align: center;
     margin: 10px;
     padding: 20px;
     border-radius: 10px;
-    background-color: #00bf73;
+    background-color: #00bf7365;
     color: white;
     font-size: 20px;
 } 
@@ -44,7 +57,6 @@ input::-webkit-inner-spin-button {
 }
  p {
     text-align: center;
-    
 } .btn-container {
     display: flex;
     justify-content: center;
@@ -55,7 +67,7 @@ input::-webkit-inner-spin-button {
     position: absolute;
     gap: 20px;
 } .btn {
-    background-color: #fd8700;
+    background-color: #1ce437;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -67,4 +79,59 @@ input::-webkit-inner-spin-button {
     transition: 0.3s;
 } .btn-container a {
     text-decoration: none;
+
+} @property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  } .container::after, .container::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle),#ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top:50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 5px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+    
+} .container::before {
+    filter: blur(6.5rem);
+    opacity: 0.5;
 }
+@keyframes spin{
+    from{
+      --angle: 0deg;
+    }
+    to{
+      --angle: 360deg;
+    }
+  } #theme-switch {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+  } #theme-switch svg{
+    fill: var(--primary-color);
+  }
+  #theme-switch svg:last-child{
+    display: none;
+  }
+  .darkmode #theme-switch svg:first-child{
+    display: none;
+  }
+  .darkmode #theme-switch svg:last-child{
+    display: block;
+  }
