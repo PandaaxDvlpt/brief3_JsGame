@@ -135,3 +135,18 @@ input::-webkit-inner-spin-button {
   .darkmode #theme-switch svg:last-child{
     display: block;
   }
+.btn-reset {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+} #reset svg {
+    fill: var(--primary-color)
+}
