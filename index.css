@@ -16,6 +16,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-size: cover;
     background-attachment: fixed;
+    overflow: hidden;
 } .container {
     background-color: var(--color-container);
     border-radius: 10px;
@@ -66,6 +67,10 @@ input::-webkit-inner-spin-button {
     transform: translate(-50%, -50%);
     position: absolute;
     gap: 20px;
+    background-color: #00bf72; 
+    padding: 10px;
+    border-radius: 10px;
+    border: #010507 solid 2px;
 } .btn {
     background-color: #1ce437;
     color: white;
@@ -149,4 +154,11 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 } #reset svg {
     fill: var(--primary-color)
+
+} .btn-reset:hover {
+    scale: 1.03;
+    transition: 0.3s;
+} #theme-switch:hover {
+    scale: 1.03;
+    transition: 0.3s;
 }
