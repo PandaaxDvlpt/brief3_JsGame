@@ -13,7 +13,7 @@ document.getElementById("videoContainer").appendChild(videoElement);
 
 // Les Events 
 
-submit.addEventListener("click", checkGuess);
+submit.addEventListener("click", checkGuess); // Ici on appelle la fontion CheckBox pour pouvoir check le nombre
 
 function checkGuess() {
     const userValue = Number(guess.value);
