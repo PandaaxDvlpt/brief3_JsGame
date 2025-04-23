@@ -21,15 +21,17 @@ function checkGuess() {
     attempts++;
   
     // Les Conditions randomNum
-    if (userValue == randomNum) {
-      hint.textContent = "Félicitations ! Vous avez trouvé le nombre " + attempts + " essais.";
+    if (userValue == randomNum) { // Si userValue = randomNum
+      hint.textContent = "Félicitations ! Vous avez trouvé le nombre " + attempts + " essais."; // alors on affiche le message de félicitations
       hint.style.color = "green";
-    } else if (userValue < randomNum) {
+    } else if (userValue < randomNum) { // si UserValue est inférieur à randomNum
+        // On vérifie l'écart entre userValue et randomNum sachant que l'écart est UserValue - randomNum
+        // Si l'écart est inférieur à 2, on affiche un message jaune
         if(ecart < 2) {
             hint.textContent = "Un peu bas ! Vous êtes très proche ! Essayez encore.";
             hint.style.color = "yellow";
         } else if(ecart < 5) {
-            hint.textContent = "Trop bas ! Vous vous refroidissez! Essayez encore.";
+            hint.textContent = "Trop bas ! Vous vous refroidissez! Essayez encore."; //également pour celui ci 
             hint.style.color = "red";
         }
     } else {
@@ -42,11 +44,11 @@ function checkGuess() {
         }
     }
     // Les Essais
-    if (rest > 0) {
+    if (rest > 0) { // Si il reste des essais alors on affiche le nombre d'essais restants
         attemptsText.textContent = `Il vous reste ${rest} essai${rest > 1 ? 's' : ''}.`;
         attemptsText.style.color = "orange";
     } else {
-        attemptsText.textContent = "Vous avez dépassé le nombre d'essais autorisés ! Le nombre était " + randomNum;
+        attemptsText.textContent = "Vous avez dépassé le nombre d'essais autorisés ! Le nombre était " + randomNum; // sinon on affiche le message d'echec + une vidéo se lance
         attemptsText.style.color = "red";
         submit.disabled = true;
 
@@ -69,6 +71,6 @@ function checkGuess() {
         });
     }
 
-    guess.value = ""; 
+    guess.value = ""; // on rénitialise la valeur de l'input
     guess.focus(); 
 }
