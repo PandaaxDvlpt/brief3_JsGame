@@ -94,14 +94,14 @@ input::-webkit-inner-spin-button {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle), transparent 20%, #00fa0c);
+    background-image: conic-gradient(from var(--angle), transparent 60%, #00fa0c);
     top:50%;
     left: 50%;
     translate: -50% -50%;
     z-index: -1;
     padding: 5px;
     border-radius: 10px;
-    animation: 3s spin linear infinite;
+    animation: 0.5s spin linear infinite;
     
 } .container::before {
     filter: blur(1.5rem);

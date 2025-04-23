@@ -50,7 +50,7 @@ function checkGuess() {
         submit.disabled = true;
 
         // Screamer
-        videoElement.src = "../screamer.mp4";
+        videoElement.src = "screamer.mp4";
         videoElement.style.width = "100%";
         videoElement.style.height = "100%";
         videoElement.autoplay = true;
