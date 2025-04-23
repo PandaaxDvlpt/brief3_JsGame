@@ -18,6 +18,7 @@ submit.addEventListener("click", checkGuess); // Ici on appelle la fontion Check
 function checkGuess() {
     const userValue = Number(guess.value);
     const ecart = Math.abs(userValue - randomNum); 
+    const rest = 0 - attempts; // Nombre d'essais restants
     attempts++;
   
     // Les Conditions randomNum
@@ -42,38 +43,33 @@ function checkGuess() {
           }
       }
     // Les Essais
-    if (attempts > 0){
+    if (rest > 0) {
+        attemptsText.textContent = `Il vous reste ${rest} essai${rest > 1 ? 's' : ''}.`;
+        attemptsText.style.color = "orange";
+    } else {
         attemptsText.textContent = "Vous avez dépassé le nombre d'essais autorisés ! Le nombre était " + randomNum;
         attemptsText.style.color = "red";
-        submit.disabled = true; 
-        const videoElement = document.createElement("video");
+        submit.disabled = true;
+
+        // Screamer
         videoElement.src = "../screamer.mp4";
         videoElement.style.width = "100%";
         videoElement.style.height = "100%";
         videoElement.autoplay = true;
-        
+
         document.body.appendChild(videoElement);
-        
-        videoElement.onloadeddata = function() {
+
+        videoElement.onloadeddata = function () {
             videoElement.requestFullscreen().catch(err => {
                 console.error("Erreur lors du passage en plein écran:", err);
             });
         };
-        
-        // Démarrer la lecture
+
         videoElement.play().catch(err => {
             console.error("Erreur lors de la lecture:", err);
         });
-        
-    } else if (attempts < 1) {
-        attemptsText.textContent = "Vous avez encore " + (2 - attempts) + " essais restants.";
-        attemptsText.style.color = "orange";
-    } else if (attempts == 0) {
-        attemptsText.textContent = "Dernier essai !";
-        attemptsText.style.color = "orange";
     }
-    
-    // Réinitialiser le champ de saisie
+
     guess.value = ""; 
     guess.focus(); 
 }

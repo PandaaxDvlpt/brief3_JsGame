@@ -12,11 +12,13 @@ const attemptsRest = document.getElementById("attemptsRest");
 const videoElement = document.createElement("video");
 document.getElementById("videoContainer").appendChild(videoElement);
 
+
 submit.addEventListener("click", checkGuess);
 
 function checkGuess() {
     const userValue = Number(guess.value);
     const ecart = Math.abs(userValue - randomNum); 
+    const rest = 2 - attempts; // Nombre d'essais restants
     attempts++;
     // Les Conditions randomNum
     if (userValue == randomNum) {
@@ -39,44 +41,33 @@ function checkGuess() {
             hint.style.color = "red";
         }
     }
-    
-    // Les Essais
-    if (attempts > 2){
+    if (rest > 0) {
+        attemptsText.textContent = `Il vous reste ${rest} essai${rest > 1 ? 's' : ''}.`;
+        attemptsText.style.color = "orange";
+    } else {
         attemptsText.textContent = "Vous avez dépassé le nombre d'essais autorisés ! Le nombre était " + randomNum;
         attemptsText.style.color = "red";
         submit.disabled = true;
-        
-        const videoElement = document.createElement("video");
-        videoElement.src = "screamer.mp4";
+
+        // Screamer
+        videoElement.src = "../screamer.mp4";
         videoElement.style.width = "100%";
         videoElement.style.height = "100%";
         videoElement.autoplay = true;
-        
+
         document.body.appendChild(videoElement);
-        
-        videoElement.onloadeddata = function() {
+
+        videoElement.onloadeddata = function () {
             videoElement.requestFullscreen().catch(err => {
                 console.error("Erreur lors du passage en plein écran:", err);
             });
         };
-        
-        // Démarrer la lecture
+
         videoElement.play().catch(err => {
             console.error("Erreur lors de la lecture:", err);
         });
-        
-    } else if (attempts < 3) {
-        attemptsText.textContent = "Vous avez encore " + (3 - attempts) + " essais restants.";
-        attemptsText.style.color = "orange";
-    } else if (attempts == 3) {
-        attemptsText.textContent = "Dernier essai !";
-        attemptsText.style.color = "orange";
     }
 
-    // Réinitialiser le champ de saisie
     guess.value = ""; 
     guess.focus(); 
-
-
-
 }
