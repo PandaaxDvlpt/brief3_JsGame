@@ -25,7 +25,7 @@ function checkGuess() {
       hint.textContent = "Félicitations ! Vous avez trouvé le nombre " + attempts + " essais.";
       hint.style.color = "green";
     } else if (userValue < randomNum) {
-        if(ecart < 2) {
+        if(ecart < 3) {
             hint.textContent = "Un peu bas ! Vous êtes très proche ! Essayez encore.";
             hint.style.color = "yellow";
         } else if(ecart < 5) {
@@ -33,7 +33,7 @@ function checkGuess() {
             hint.style.color = "red";
         }
     } else {
-        if(ecart > 2) {
+        if(ecart > 3) {
             hint.textContent = "Un peu haut ! Vous êtes très proche ! Essayez encore.";
             hint.style.color = "yellow";
         } else if(ecart > 5) {

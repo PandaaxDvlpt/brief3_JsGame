@@ -24,18 +24,16 @@ function checkGuess() {
     if (userValue == randomNum) { // Si userValue = randomNum
       hint.textContent = "Félicitations ! Vous avez trouvé le nombre " + attempts + " essais."; // alors on affiche le message de félicitations
       hint.style.color = "green";
-    } else if (userValue < randomNum) { // si UserValue est inférieur à randomNum
-        // On vérifie l'écart entre userValue et randomNum sachant que l'écart est UserValue - randomNum
-        // Si l'écart est inférieur à 2, on affiche un message jaune
-        if(ecart < 2) {
+    } else if (userValue < randomNum) {
+        if(ecart < 3) {
             hint.textContent = "Un peu bas ! Vous êtes très proche ! Essayez encore.";
             hint.style.color = "yellow";
         } else if(ecart < 5) {
-            hint.textContent = "Trop bas ! Vous vous refroidissez! Essayez encore."; //également pour celui ci 
+            hint.textContent = "Trop bas ! Vous vous refroidissez! Essayez encore.";
             hint.style.color = "red";
         }
     } else {
-        if(ecart > 2) {
+        if(ecart > 3) {
             hint.textContent = "Un peu haut ! Vous êtes très proche ! Essayez encore.";
             hint.style.color = "yellow";
         } else if(ecart > 5) {
